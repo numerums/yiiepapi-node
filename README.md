@@ -97,5 +97,7 @@ yiiepApi.presetBill(billId, billValue, currency).then((presetData) => {
 ```
 ## Credits
 [Request-Promise](https://github.com/request/request-promise#readme/)
+
 [JWT](https://jwt.io/)
+
 [Bluebird](http://bluebirdjs.com/docs/getting-started.html)
