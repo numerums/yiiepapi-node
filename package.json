@@ -1,0 +1,33 @@
+{
+  "name": "yiiepapi-node",
+  "version": "1.0.0",
+  "description": "Yiiep payment plateform API for nodejs",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/numerums/yiiepapi-node.git"
+  },
+  "keywords": [
+    "yiiep",
+    "mobile",
+    "money",
+    "payment",
+    "api",
+    "node"
+  ],
+  "author": "Numerum Services <numerums@gmail.com>",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/numerums/yiiepapi-node/issues"
+  },
+  "homepage": "https://github.com/numerums/yiiepapi-node#readme",
+  "dependencies": {
+    "bluebird": "^3.5.3",
+    "jsonwebtoken": "^8.4.0",
+    "request": "^2.88.0",
+    "request-promise": "^4.2.2"
+  }
+}
