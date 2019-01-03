@@ -21,7 +21,7 @@ npm install
 Setup bill on Yiiep plateform
 
 
-### function unsetBill(billHash)
+### unsetBill(billHash)
 Cancel Bill on Yiiep
 
 
@@ -60,7 +60,7 @@ var apiKey = '926abbf15fe74c8d06b963710f71371ab43a17bc'; //test key
 // 1 - Créer la facture
 var billId = 'FACT0000001';
 var billValue = 200;
-var currency = 'XOF;
+var currency = 'XOF';
 /*Supported Currencies
 XAF	=> CFA CEMAC
 XOF	=> CFA UEMOA
@@ -74,7 +74,7 @@ GHS	=> Ghana Cedis
 */
 
 // 3 - Créer l'objet YiiepApi
-var yiiepApi = new YiiepApi(apiId, apiKey, 'test); //Change 
+var yiiepApi = new YiiepApi(apiId, apiKey, 'test'); //Change 
 
 // 4 - Déclarer la facture
 yiiepApi.presetBill(billId, billValue, currency).then((presetData) => {
