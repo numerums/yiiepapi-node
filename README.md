@@ -70,11 +70,11 @@ GHS	=> Ghana Cedis
 
 // 2 - Sauvegarder la facture dans la base locale
 /* 
-	Do database stuffs here 
+	Do database stuffs here
 */
 
 // 3 - Créer l'objet YiiepApi
-var yiiepApi = new YiiepApi(apiId, apiKey, 'test'); //Change 
+var yiiepApi = new YiiepApi(apiId, apiKey, 'test'); //Change to 'real' for production
 
 // 4 - Déclarer la facture
 yiiepApi.presetBill(billId, billValue, currency).then((presetData) => {
@@ -82,7 +82,7 @@ yiiepApi.presetBill(billId, billValue, currency).then((presetData) => {
     // 6 - Récupérer l'ID de payement Yiiep de votre facture
     var billHash = presetData.billhash;
 
-    // 7' - Créer le lien de payement
+    // 7' - Créer le lien de payement 
     var payLink = yiiepApi.payLink(billHash, 'btn btn-lg btn-primary');
 
     // 7'' - Créer le QR code de payement
@@ -95,6 +95,7 @@ yiiepApi.presetBill(billId, billValue, currency).then((presetData) => {
 });
 
 ```
+
 ## Credits
 [Request-Promise](https://github.com/request/request-promise#readme/)
 
