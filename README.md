@@ -54,8 +54,8 @@ Ci dessous un exemple d'utilisation de l'API. Une version fonctionnelle de cet e
 const YiiepApi = require('yiiepapi-node');
 
 // 0 - Obtenir un ID/KEY (https://www.yiiep.com/login) 
-var apiId = '4f06bba52a4bb09515b825fb1ef0709b'; //test Id
-var apiKey = '926abbf15fe74c8d06b963710f71371ab43a17bc'; //test key
+const apiId = '4f06bba52a4bb09515b825fb1ef0709b'; //test Id
+const apiKey = '926abbf15fe74c8d06b963710f71371ab43a17bc'; //test key
 
 // 1 - Créer la facture
 var billId = 'FACT0000001';
