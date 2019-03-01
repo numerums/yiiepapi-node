@@ -51,7 +51,7 @@ Transfert money from an Yiiep account to an Yiiep account
 Ci dessous un exemple d'utilisation de l'API. Une version fonctionnelle de cet exemple est disponible dans le dossier  [example](../../example).  Pour plus d'information veuillez consulter la documentation.
 
 ```javascript
-var YiiepApi = require('yiiepapi-node');
+const YiiepApi = require('yiiepapi-node');
 
 // 0 - Obtenir un ID/KEY (https://www.yiiep.com/login) 
 var apiId = '4f06bba52a4bb09515b825fb1ef0709b'; //test Id
