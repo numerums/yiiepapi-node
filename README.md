@@ -86,12 +86,25 @@ yiiepApi.presetBill(billId, billValue, currency).then((presetData) => {
     var payLink = yiiepApi.payLink(billHash, 'btn btn-lg btn-primary');
 
     // 7'' - Créer le QR code de payement
-	$payQR = yiiepApi->payQR(billHash, 'img-thumbnail');
+	var payQR = yiiepApi.payQR(billHash, 'img-thumbnail');
 
     // 8 Do html/view stuffs here
 
 }).catch(err => {
-    console.log('Error occure -->> ', err)
+    console.log('Preset Error occure -->> ', err);
+});
+
+// 9 - check bill state - assuming user do payment
+yiiepApi.checkBill(billHash).then((stateData) => {
+    console.log('Bill state success -->> ', stateData);
+
+    if(stateData.state === 'Paid'){
+        //10  - Bill is paid, handle user order validation...
+    }else{
+        //Bill is not paid
+    }
+}).catch(err => {
+    console.log('Check State Error occure -->> ', err);
 });
 
 ```
