@@ -1,6 +1,6 @@
 {
   "name": "yiiepapi-node",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Yiiep payment plateform API for nodejs",
   "main": "index.js",
   "scripts": {
