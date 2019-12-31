@@ -18,7 +18,7 @@ npm install
 ## Fonctions principales
 
 ### presetBill(billId, billAmount, $currency)
-Setup bill on Yiiep plateform
+Setup bill on Yiiep plateform. Return promise - Resolve Data contains : {bill, billhash, billstate, billQRStr,, billcrcy}
 
 
 ### unsetBill(billHash)
@@ -52,11 +52,11 @@ Transfert money from an Yiiep account to an Yiiep account
 Ci dessous un exemple d'utilisation de l'API. Une version fonctionnelle de cet exemple est disponible dans le dossier  [example](../../example).  Pour plus d'information veuillez consulter la documentation.
 
 ```javascript
-var YiiepApi = require('yiiepapi-node');
+const YiiepApi = require('yiiepapi-node');
 
 // 0 - Obtenir un ID/KEY (https://www.yiiep.com/login) 
-var apiId = '4f06bba52a4bb09515b825fb1ef0709b'; //test Id
-var apiKey = '926abbf15fe74c8d06b963710f71371ab43a17bc'; //test key
+const apiId = '4f06bba52a4bb09515b825fb1ef0709b'; //test Id
+const apiKey = '926abbf15fe74c8d06b963710f71371ab43a17bc'; //test key
 
 // 1 - Créer la facture
 var billId = 'FACT0000001';
@@ -71,11 +71,11 @@ GHS	=> Ghana Cedis
 
 // 2 - Sauvegarder la facture dans la base locale
 /* 
-	Do database stuffs here 
+	Do database stuffs here
 */
 
 // 3 - Créer l'objet YiiepApi
-var yiiepApi = new YiiepApi(apiId, apiKey, 'test'); //Change 
+var yiiepApi = new YiiepApi(apiId, apiKey, 'test'); //Change to 'real' for production
 
 // 4 - Déclarer la facture
 yiiepApi.presetBill(billId, billValue, currency).then((presetData) => {
@@ -84,19 +84,33 @@ yiiepApi.presetBill(billId, billValue, currency).then((presetData) => {
     var billHash = presetData.billhash;
     var qrStr = presetData.billQRStr;
 
-    // 7' - Créer le lien de payement
+    // 7' - Créer le lien de payement 
     var payLink = yiiepApi.payLink(billHash, 'btn btn-lg btn-primary');
 
     // 7'' - Créer le QR code de payement
-	$payQR = yiiepApi->payQR(billHash, presetData.q 'img-thumbnail');
+	$payQR = yiiepApi->payQR(billHash, presetData.qrStr 'img-thumbnail');
 
     // 8 Do html/view stuffs here
 
 }).catch(err => {
-    console.log('Error occure -->> ', err)
+    console.log('Preset Error occure -->> ', err);
+});
+
+// 9 - check bill state - assuming user do payment
+yiiepApi.checkBill(billHash).then((stateData) => {
+    console.log('Bill state success -->> ', stateData);
+
+    if(stateData.state === 'Paid'){
+        //10  - Bill is paid, handle user order validation...
+    }else{
+        //Bill is not paid
+    }
+}).catch(err => {
+    console.log('Check State Error occure -->> ', err);
 });
 
 ```
+
 ## Credits
 [Request-Promise](https://github.com/request/request-promise#readme/)
 
