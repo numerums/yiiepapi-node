@@ -17,7 +17,7 @@ npm install
 
 ## Fonctions principales
 
-### presetBill(billId, billAmount, $urrency)
+### presetBill(billId, billAmount, $currency)
 Setup bill on Yiiep plateform
 
 
@@ -29,12 +29,13 @@ Cancel Bill on Yiiep
 Get bill state
 
 
-### payLink(billhash, class = '')
+### payLink(billHash, class = '')
 Build Yiiep pay link for a bill - Use to redirect user to Yiiep web site
 
 
-### function payQR(billhash, class = '')
+### function payQR(billHash, qrStr, class = '')
 Build Yiiep pay qr code image tag for a bill - Use to display qrcode on your website
+billHash and qrStr are returned by presetBill
 
 
 ### transfer(amount, currency, receiver)
@@ -42,7 +43,7 @@ Transfert money from an Yiiep account to an Yiiep account
 
 
 ## Obtenir un ID d'api pour votre site ou application
-1. [Créer un compte](https://www.yiiep.com/login)
+1. [Créer un compte](https://yiiep.com/login)
 2. Enregistrez un site marchand
 3. Récupérer et configurer l'ID et la clé d'API dans le fichier config
 
@@ -81,12 +82,13 @@ yiiepApi.presetBill(billId, billValue, currency).then((presetData) => {
 
     // 6 - Récupérer l'ID de payement Yiiep de votre facture
     var billHash = presetData.billhash;
+    var qrStr = presetData.billQRStr;
 
     // 7' - Créer le lien de payement
     var payLink = yiiepApi.payLink(billHash, 'btn btn-lg btn-primary');
 
     // 7'' - Créer le QR code de payement
-	$payQR = yiiepApi->payQR(billHash, 'img-thumbnail');
+	$payQR = yiiepApi->payQR(billHash, presetData.q 'img-thumbnail');
 
     // 8 Do html/view stuffs here
 
