@@ -11,7 +11,7 @@ Visitez [www.yiiep.com](https://www.yiiep.com/) pour en savoir plus.
 
 ```bash
 
-npm install
+npm install yiiepapi-node
 
 ```
 
